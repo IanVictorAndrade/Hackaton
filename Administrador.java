@@ -4,17 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Administrador {
-    private String nome;
-    private String login;
-    private String senha;
-
-    //Construtor
-
-    public Administrador(String nome, String login, String senha) {
-        this.nome = nome;
-        this.login = login;
-        this.senha = senha;
-    }
+    private String nome = "Ian";
+    private String login = "ian@gmail.com";
+    private String senha = "123";
 
     //Getters e Setters
 
@@ -44,35 +36,48 @@ public class Administrador {
 
     //Metodos
 
-    public static boolean validarLogin() {
+    public boolean validarLogin(String loginDigitado, String senhaDigitada) {
+        return loginDigitado.equals(login) && senhaDigitada.equals(senha);
+    }
+
+    public void login() {
+            String loginDigitado = JOptionPane.showInputDialog("Digite o login: ");
+            String senhaDigitada = JOptionPane.showInputDialog("Digite a senha: ");
+
+            if (validarLogin(loginDigitado, senhaDigitada)) {
+                JOptionPane.showMessageDialog(null, "Login bem-sucedido!");
+                // Aqui você pode colocar o código para passar para a próxima tela
+            } else {
+                JOptionPane.showMessageDialog(null, "Login ou senha incorretos. Tente novamente.");
+                return;
+            }
+    }
+
+    public boolean validarSenha() {
         return true;
     }
 
-    public static boolean validarSenha() {
-        return true;
-    }
-
-    public static String cadastrarProfessor() {
+    public String cadastrarProfessor() {
         return "";
     }
 
-    public static String alterarCadProf() {
+    public String alterarCadProf() {
         return "";
     }
 
-    public static String cadastrarDisciplina() {
+    public String cadastrarDisciplina() {
         return "";
     }
 
-    public static String alterarCadDisc() {
+    public String alterarCadDisc() {
         return "";
     }
 
-    public static String cadastrarTurma() {
+    public String cadastrarTurma() {
         return "";
     }
 
-    public static String alterarCadTurma() {
+    public String alterarCadTurma() {
         return "";
     }
 
