@@ -18,21 +18,21 @@ public class Professor {
 
     // Metodo construtor
 
-    public Professor(String nome, int matricula, String especializacao, boolean coordenador, int cHoraria, String login,
-            String senha,
-            String disciplinasEscolhidas, String disciplinaDominio, String turnoPreferido, String afinidadeTurma) {
-        this.nome = nome;
-        this.matricula = matricula;
-        this.especializacao = especializacao;
-        this.coordenador = coordenador;
-        this.cHoraria = cHoraria;
-        this.login = login;
-        this.senha = senha;
-        this.disciplinasEscolhidas = disciplinasEscolhidas;
-        this.disciplinaDominio = disciplinaDominio;
-        this.turnoPreferido = turnoPreferido;
-        this.afinidadeTurma = afinidadeTurma;
-    }
+//    public Professor(String nome, int matricula, String especializacao, boolean coordenador, int cHoraria, String login,
+//            String senha,
+//            String disciplinasEscolhidas, String disciplinaDominio, String turnoPreferido, String afinidadeTurma) {
+//        this.nome = nome;
+//        this.matricula = matricula;
+//        this.especializacao = especializacao;
+//        this.coordenador = coordenador;
+//        this.cHoraria = cHoraria;
+//        this.login = login;
+//        this.senha = senha;
+//        this.disciplinasEscolhidas = disciplinasEscolhidas;
+//        this.disciplinaDominio = disciplinaDominio;
+//        this.turnoPreferido = turnoPreferido;
+//        this.afinidadeTurma = afinidadeTurma;
+//    }
 
     // Getters e setters
 

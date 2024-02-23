@@ -1,8 +1,19 @@
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Terminal {
     public static void main(String[] args) {
-        while (true) {
+        Professor professor = new Professor();
+        ArrayList<Professor> professores = new ArrayList<>();
+        Professor prof1 = new Professor();
+        Professor prof2 = new Professor();
+        professores.add(prof1);
+        professores.add(prof2);
+        Administrador adm = new Administrador();
+
+        boolean loop = true;
+
+        while (loop) {
 
             String[] opcoes = {"Professor", "Administrador", "Sair"};
             int opcao = JOptionPane.showOptionDialog(
@@ -17,13 +28,14 @@ public class Terminal {
 
             switch (opcao) {
                 case 0: // Professor
-                    escolhaReciboOpcoes(listaRecibos, sdf);
+                    professor.loginComoProfessor(professores);
                     break;
                 case 1: // Administrador
-                    escolhaEquipamentoOpcoes(listaClientes, listaEquipamentos);
+                    adm.login();
                     break;
                 case 2: // Sair
                     JOptionPane.showMessageDialog(null, "Programa encerrado.");
+                    loop = false;
                     break;
 
             }
