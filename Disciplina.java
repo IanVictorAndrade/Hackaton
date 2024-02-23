@@ -9,14 +9,14 @@ public class Disciplina {
     private int cargaHoraria;
     private String professorResponsavel;
 
-    ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
-    
+    public ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
+
     //Construtor
-    
-    public Disciplina(String nomeDisciplina, int cargaHorariaS) {
-        this.nomeDisciplina = nomeDisciplina;
-        this.cargaHoraria = cargaHorariaS;
-    }
+//
+//    public Disciplina(String nomeDisciplina, int cargaHorariaS) {
+//        this.nomeDisciplina = nomeDisciplina;
+//        this.cargaHoraria = cargaHorariaS;
+//    }
 
     //Getters e Setters
 
@@ -49,11 +49,17 @@ public class Disciplina {
 
     //Metodos
 
-    public String listarDisciplinas() {
-        this.disciplinas.forEach(disciplina -> {
-            System.out.println(disciplina.getNomeDisciplina());
-        });
-        return null;
+    public void cadastrarDisciplina() {
+        Disciplina disciplina = new Disciplina();
+        disciplina.setNomeDisciplina(JOptionPane.showInputDialog("Digite o nome da disciplina: "));
+        disciplina.setCargaHorariaS(Integer.parseInt(JOptionPane.showInputDialog("Digite a carga horária da disciplina: ")));
+        disciplinas.add(disciplina);
+    }
+
+    public void listarDisciplinas() {
+        for (Disciplina disciplina : disciplinas) {
+            JOptionPane.showMessageDialog(null, "Nome da disciplina: " + disciplina.getNomeDisciplina() + "\nCarga horária: " + disciplina.getCargaHorariaS());
+        }
     }
 
     public static String exibirChoque() {

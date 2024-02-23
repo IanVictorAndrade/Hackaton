@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class Terminal {
     public static void main(String[] args) {
-        
+        Disciplina disciplina = new Disciplina();
+        disciplina.cadastrarDisciplina();
+        disciplina.listarDisciplinas();
     }
 }
