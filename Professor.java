@@ -119,6 +119,7 @@ public class Professor {
     // Metodos
 
     public static void loginComoProfessor(ArrayList<Professor> professores) {
+        boolean logado = false;
         String login = JOptionPane.showInputDialog("Digite seu código de matrícula: ");
         if (login == null) {
             JOptionPane.showMessageDialog(null, "Operação cancelada.");
@@ -127,10 +128,10 @@ public class Professor {
         String senha = JOptionPane.showInputDialog("Digite sua senha: ");
         if (senha == null) {
             JOptionPane.showMessageDialog(null, "Operação cancelada.");
+            return;
         }
 
         // Verificação se o login vai ser correspondente
-        boolean logado = false;
         for (Professor professor : professores) {
             if (professor.getLogin().equals(login) && professor.getSenha().equals(senha)) {
                 logado = true;
@@ -147,29 +148,34 @@ public class Professor {
     }
 
     public static void menuProfessor() {
-        String[] opcoesMenu = { "Escolher disciplinas", "Gerenciar preferências", "Listar disciplinas escolhidas", "Sair"};
-        int escolha = JOptionPane.showOptionDialog(null, "Escolha uma opção: ", "Menu", JOptionPane.DEFAULT_OPTION,
-                JOptionPane.PLAIN_MESSAGE, null, opcoesMenu, opcoesMenu[0]);
+        boolean sair = false;
+        while (!sair) {
+            String[] opcoesMenu = { "Escolher disciplinas", "Gerenciar preferências", "Listar disciplinas escolhidas",
+                    "Sair" };
+            int escolha = JOptionPane.showOptionDialog(null, "Escolha uma opção: ", "Menu", JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.PLAIN_MESSAGE, null, opcoesMenu, opcoesMenu[0]);
 
-        switch (escolha) {
-            case 0:
-                JOptionPane.showMessageDialog(null, "Opção 'Escolher disciplinas' selecionada.");
-                //Chamar metodo escolherDisciplinas()
-                break;
-            case 1:
-                JOptionPane.showMessageDialog(null, "Opção 'Gerenciar preferências' selecionada.");
-                //Chamar metodo gerenciarPreferencias()
-                break;
-            case 2:
-                JOptionPane.showMessageDialog(null, "Opção 'Listar disciplinas escolhidas' selecionada.");
-                //Chamar metodo listarDiscEscolhidas()
-                break;
-            case 3:
-                JOptionPane.showMessageDialog(null, "Saindo...");
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Nenhuma opção selecionada.");
-                break;
+            switch (escolha) {
+                case 0:
+                    JOptionPane.showMessageDialog(null, "Opção 'Escolher disciplinas' selecionada.");
+                    // Chamar metodo escolherDisciplinas()
+                    break;
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Opção 'Gerenciar preferências' selecionada.");
+                    // Chamar metodo gerenciarPreferencias()
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "Opção 'Listar disciplinas escolhidas' selecionada.");
+                    // Chamar metodo listarDiscEscolhidas()
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null, "Saindo...");
+                    sair = true; // Altera a variável para sair do loop
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Nenhuma opção selecionada.");
+                    break;
+            }
         }
     }
 

@@ -11,7 +11,7 @@ public class TerminalTesteProfessor {
         professores.add(prof1);
         professores.add(prof2);
 
-        String[] opcoesLogin = {"Logar como professor", "Logar como admnistrador"};
+        String[] opcoesLogin = {"Logar como professor", "Logar como admnistrador", "Sair"};
 
         int escolha = JOptionPane.showOptionDialog(null, "Como deseja realizar o login?", "Login", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoesLogin, opcoesLogin[0]);
 
@@ -21,6 +21,8 @@ public class TerminalTesteProfessor {
                 break;
             case 1:
                 //loginComoAdministrador();
+                break;
+            case 2:
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Nenhuma opção selecionada.");
