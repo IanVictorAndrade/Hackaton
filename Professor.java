@@ -7,6 +7,7 @@ public class Professor {
     private String nome;
     private int matricula;
     private String especializacao;
+    private boolean coordenador;
     private int cHoraria;
     private String login;
     private String senha;
@@ -17,11 +18,13 @@ public class Professor {
 
     // Metodo construtor
 
-    public Professor(String nome, int matricula, String especializacao, int cHoraria, String login, String senha,
+    public Professor(String nome, int matricula, String especializacao, boolean coordenador, int cHoraria, String login,
+            String senha,
             String disciplinasEscolhidas, String disciplinaDominio, String turnoPreferido, String afinidadeTurma) {
         this.nome = nome;
         this.matricula = matricula;
         this.especializacao = especializacao;
+        this.coordenador = coordenador;
         this.cHoraria = cHoraria;
         this.login = login;
         this.senha = senha;
@@ -117,27 +120,60 @@ public class Professor {
 
     public static void loginComoProfessor(ArrayList<Professor> professores) {
         String login = JOptionPane.showInputDialog("Digite seu código de matrícula: ");
+        if (login == null) {
+            JOptionPane.showMessageDialog(null, "Operação cancelada.");
+            return;
+        }
         String senha = JOptionPane.showInputDialog("Digite sua senha: ");
+        if (senha == null) {
+            JOptionPane.showMessageDialog(null, "Operação cancelada.");
+        }
 
-        //Verificação se o login vai ser correspondente
+        // Verificação se o login vai ser correspondente
         boolean logado = false;
         for (Professor professor : professores) {
             if (professor.getLogin().equals(login) && professor.getSenha().equals(senha)) {
                 logado = true;
                 JOptionPane.showMessageDialog(null, "Login efetuado com sucesso!");
+                //Caso as credencias estiverem corretas, o professor terá acesso ao menu do professor
+                menuProfessor();
                 break;
             }
         }
-            if (!logado) {
-                JOptionPane.showMessageDialog(null, "Credenciais inválidas.");
-            }
+        if (!logado) {
+            JOptionPane.showMessageDialog(null, "Credenciais inválidas.");
+            loginComoProfessor(professores);
+        }
     }
 
-    public static boolean coordenador() {
-        return true;
+    public static void menuProfessor() {
+        String[] opcoesMenu = { "Escolher disciplinas", "Gerenciar preferências", "Listar disciplinas escolhidas", "Sair"};
+        int escolha = JOptionPane.showOptionDialog(null, "Escolha uma opção: ", "Menu", JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE, null, opcoesMenu, opcoesMenu[0]);
+
+        switch (escolha) {
+            case 0:
+                JOptionPane.showMessageDialog(null, "Opção 'Escolher disciplinas' selecionada.");
+                //Chamar metodo escolherDisciplinas()
+                break;
+            case 1:
+                JOptionPane.showMessageDialog(null, "Opção 'Gerenciar preferências' selecionada.");
+                //Chamar metodo gerenciarPreferencias()
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(null, "Opção 'Listar disciplinas escolhidas' selecionada.");
+                //Chamar metodo listarDiscEscolhidas()
+                break;
+            case 3:
+                JOptionPane.showMessageDialog(null, "Saindo...");
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Nenhuma opção selecionada.");
+                break;
+        }
     }
 
-    public static String escolherDisciplina() {
+    public static String escolherDisciplinas() {
         return "";
     }
 
