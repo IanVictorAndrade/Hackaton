@@ -62,12 +62,19 @@ public class Disciplina {
     //Métodos
 
     public void cadastrarDisciplina() {
+        String[] niveis = {"Técnico", "Subsequente", "Graduação"};
+        String[] periodos = {"Matutino", "Vespertino", "Noturno"};
+        String[] categorias = {"Análise de Sistemas", "Redes", "Hardware", "Teoria"};
+
         do {
             Disciplina disciplina = new Disciplina();
             disciplina.setNomeDisciplina(JOptionPane.showInputDialog("Digite o nome da disciplina: "));
-            disciplina.setNivel(JOptionPane.showInputDialog("Digite o nível(técnico, subsequente, graduação) da disciplina: "));
-            disciplina.setPeriodo(JOptionPane.showInputDialog("Digite o período(matutino, vespertino e noturno) da disciplina: "));
-            disciplina.setCategoria(JOptionPane.showInputDialog("Digite a categoria(análise de sistemas, redes, hardware, teoria) da disciplina: "));
+            disciplina.setNivel((String) JOptionPane.showInputDialog(null, "Selecione o nível da disciplina:",
+                    "Nível", JOptionPane.QUESTION_MESSAGE, null, niveis, niveis[0]));
+            disciplina.setPeriodo((String) JOptionPane.showInputDialog(null, "Selecione o período da disciplina:",
+                    "Período", JOptionPane.QUESTION_MESSAGE, null, periodos, periodos[0]));
+            disciplina.setCategoria((String) JOptionPane.showInputDialog(null, "Selecione a categoria da disciplina:",
+                    "Categoria", JOptionPane.QUESTION_MESSAGE, null, categorias, categorias[0]));
             disciplina.setCargaHorariaS(Integer.parseInt(JOptionPane.showInputDialog("Digite a carga horária da disciplina: ")));
             disciplinas.add(disciplina);
 
@@ -79,8 +86,8 @@ public class Disciplina {
                 break;
             }
         } while (true);
-
     }
+
 
     public void listarDisciplinas() {
         StringBuilder mensagem = new StringBuilder();
