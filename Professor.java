@@ -18,21 +18,21 @@ public class Professor {
 
     // Metodo construtor
 
-    public Professor(String nome, int matricula, String especializacao, boolean coordenador, int cHoraria, String login,
-            String senha,
-            String disciplinasEscolhidas, String disciplinaDominio, String turnoPreferido, String afinidadeTurma) {
-        this.nome = nome;
-        this.matricula = matricula;
-        this.especializacao = especializacao;
-        this.coordenador = coordenador;
-        this.cHoraria = cHoraria;
-        this.login = login;
-        this.senha = senha;
-        this.disciplinasEscolhidas = disciplinasEscolhidas;
-        this.disciplinaDominio = disciplinaDominio;
-        this.turnoPreferido = turnoPreferido;
-        this.afinidadeTurma = afinidadeTurma;
-    }
+//    public Professor(String nome, int matricula, String especializacao, boolean coordenador, int cHoraria, String login,
+//            String senha,
+//            String disciplinasEscolhidas, String disciplinaDominio, String turnoPreferido, String afinidadeTurma) {
+//        this.nome = nome;
+//        this.matricula = matricula;
+//        this.especializacao = especializacao;
+//        this.coordenador = coordenador;
+//        this.cHoraria = cHoraria;
+//        this.login = login;
+//        this.senha = senha;
+//        this.disciplinasEscolhidas = disciplinasEscolhidas;
+//        this.disciplinaDominio = disciplinaDominio;
+//        this.turnoPreferido = turnoPreferido;
+//        this.afinidadeTurma = afinidadeTurma;
+//    }
 
     // Getters e setters
 
@@ -118,7 +118,7 @@ public class Professor {
 
     // Metodos
 
-    public static void loginComoProfessor(ArrayList<Professor> professores) {
+    public void loginComoProfessor(ArrayList<Professor> professores) {
         String login = JOptionPane.showInputDialog("Digite seu código de matrícula: ");
         if (login == null) {
             JOptionPane.showMessageDialog(null, "Operação cancelada.");
