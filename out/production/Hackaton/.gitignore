@@ -1,0 +1,6 @@
+### IntelliJ Idea ###
+.idea/
+out
+
+### Visual Studio Code ###
+.vscode/
