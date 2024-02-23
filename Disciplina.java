@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Disciplina {
+    private int Id;
     private String nomeDisciplina;
     private int cargaHorariaS;
     private String professorResponsavel;
@@ -16,6 +17,14 @@ public class Disciplina {
     }
 
     //Getters e Setters
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
 
     public String getNomeDisciplina() {
         return nomeDisciplina;
