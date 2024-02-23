@@ -7,7 +7,9 @@ public class TerminalTesteProfessor {
     public static void main(String[] args) {
     ArrayList<Professor> professores = new ArrayList<>();
         Professor prof1 = new Professor("Alguém", 2023, null, 0, "2024", "2024", null, null, null, null);
+        Professor prof2 = new Professor(null, 2023, null, 0, "2023", "2023", null, null, null, null);
         professores.add(prof1);
+        professores.add(prof2);
 
         String[] opcoesLogin = {"Logar como professor", "Logar como admnistrador"};
 
@@ -15,7 +17,7 @@ public class TerminalTesteProfessor {
 
         switch (escolha) {
             case 0:
-                
+                Professor.loginComoProfessor(professores);
                 break;
             case 1:
                 //loginComoAdministrador();
@@ -25,4 +27,5 @@ public class TerminalTesteProfessor {
                 break;
         }
     }
+
 }
