@@ -98,27 +98,27 @@ public class Professor {
     //Metodos
 
     public static boolean validarLogin() {
-
+        return true;
     }
 
     public static boolean validarSenha() {
-
+        return true;
     }
 
     public static boolean coordenador() {
-
+        return true;
     }
 
     public static String escolherDisciplina() {
-
+        return "";
     }
 
     public static String gerenciarPreferencias() {
-
+        return "";
     }
 
     public static String listarDiscEscolhidas() {
-
+        return "";
     }
 
 }

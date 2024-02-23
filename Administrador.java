@@ -45,35 +45,35 @@ public class Administrador {
     //Metodos
 
     public static boolean validarLogin() {
-
+        return true;
     }
 
     public static boolean validarSenha() {
-
+        return true;
     }
 
     public static String cadastrarProfessor() {
-
+        return "";
     }
 
     public static String alterarCadProf() {
-
+        return "";
     }
 
     public static String cadastrarDisciplina() {
-
+        return "";
     }
 
     public static String alterarCadDisc() {
-
+        return "";
     }
 
     public static String cadastrarTurma() {
-
+        return "";
     }
 
     public static String alterarCadTurma() {
-        
+        return "";
     }
 
 }

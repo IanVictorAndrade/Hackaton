@@ -6,14 +6,16 @@ import java.util.Scanner;
 public class Disciplina {
     private int Id;
     private String nomeDisciplina;
-    private int cargaHorariaS;
+    private int cargaHoraria;
     private String professorResponsavel;
+
+    ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
     
     //Construtor
     
     public Disciplina(String nomeDisciplina, int cargaHorariaS) {
         this.nomeDisciplina = nomeDisciplina;
-        this.cargaHorariaS = cargaHorariaS;
+        this.cargaHoraria = cargaHorariaS;
     }
 
     //Getters e Setters
@@ -33,10 +35,10 @@ public class Disciplina {
         this.nomeDisciplina = nomeDisciplina;
     }
     public int getCargaHorariaS() {
-        return cargaHorariaS;
+        return cargaHoraria;
     }
     public void setCargaHorariaS(int cargaHorariaS) {
-        this.cargaHorariaS = cargaHorariaS;
+        this.cargaHoraria = cargaHorariaS;
     }
     public String getProfessorResponsavel() {
         return professorResponsavel;
@@ -47,12 +49,15 @@ public class Disciplina {
 
     //Metodos
 
-    public static String listarDisciplinas() {
-
+    public String listarDisciplinas() {
+        this.disciplinas.forEach(disciplina -> {
+            System.out.println(disciplina.getNomeDisciplina());
+        });
+        return null;
     }
 
     public static String exibirChoque() {
-
+        return null;
     }
 
 }
