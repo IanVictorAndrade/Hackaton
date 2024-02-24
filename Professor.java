@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class Professor {
     private String nome;
-    private int matricula;
+    private Long matricula;
     private String especializacao;
     private boolean coordenador;
     private int cHoraria;
-    private String login;
+    public String login;
     private String senha;
     private String disciplinasEscolhidas;
     private String disciplinaDominio;
@@ -44,11 +44,11 @@ public class Professor {
         this.nome = nome;
     }
 
-    public int getMatricula() {
+    public Long getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(Long matricula) {
         this.matricula = matricula;
     }
 
@@ -116,35 +116,23 @@ public class Professor {
         this.afinidadeTurma = afinidadeTurma;
     }
 
+    public boolean isCoordenador() {
+        return coordenador;
+    }
+
+    public void setCoordenador(boolean coordenador) {
+        this.coordenador = coordenador;
+    }
+
     // Metodos
 
-    public static void loginComoProfessor(ArrayList<Professor> professores) {
-        boolean logado = false;
-        String login = JOptionPane.showInputDialog("Digite seu código de matrícula: ");
-        if (login == null) {
-            JOptionPane.showMessageDialog(null, "Operação cancelada.");
-            return;
-        }
-        String senha = JOptionPane.showInputDialog("Digite sua senha: ");
-        if (senha == null) {
-            JOptionPane.showMessageDialog(null, "Operação cancelada.");
-            return;
-        }
-
-        // Verificação se o login vai ser correspondente
+    public static Professor login(ArrayList<Professor> professores, String login, String senha) {
         for (Professor professor : professores) {
             if (professor.getLogin().equals(login) && professor.getSenha().equals(senha)) {
-                logado = true;
-                JOptionPane.showMessageDialog(null, "Login efetuado com sucesso!");
-                //Caso as credencias estiverem corretas, o professor terá acesso ao menu do professor
-                menuProfessor();
-                break;
+                return professor; // encontrou um professor com o login e senha correspondentes
             }
         }
-        if (!logado) {
-            JOptionPane.showMessageDialog(null, "Credenciais inválidas.");
-            loginComoProfessor(professores);
-        }
+        return null; // nenhum professor encontrado com o login e senha correspondentes
     }
 
     public static void menuProfessor() {
