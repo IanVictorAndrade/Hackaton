@@ -195,7 +195,8 @@ public class Turma {
                             break;
     
                         case 4:    // Edição da Disciplina
-                            Disciplina.listarDisciplinas();
+                            Administrador adm = new Administrador();
+                            adm.listarDisciplinas(adm.getDisciplinas());
                             int idEditarDisciplina = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID da disciplina desejada:")); 
                             // Lista de opções de disciplinas
                                 String[] opcoesDisciplinas = new String[listaDisciplinas.size()];

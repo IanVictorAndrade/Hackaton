@@ -9,8 +9,11 @@ public class Administrador {
     private String senha = "123";
     private ArrayList<Professor> professoresCadastrados;
 
+    private ArrayList<Disciplina> disciplinas;
+
     public Administrador() {
         this.professoresCadastrados = new ArrayList<>();
+        this.disciplinas = new ArrayList<>(); // Inicialização da lista disciplinas
     }
 
 
@@ -38,6 +41,14 @@ public class Administrador {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public ArrayList<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(ArrayList<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
     }
 
     public ArrayList<Professor> getProfessoresCadastrados() {
@@ -87,14 +98,63 @@ public class Administrador {
                 listarProfessores();
                 break;
             case 2: // Cadastrar disciplina
-                disciplina.cadastrarDisciplina();
+                cadastrarDisciplina();
+                menuAdministrador();
                 break;
             case 3: // Listar disciplinas
-                disciplina.listarDisciplinas();
+                listarDisciplinas(disciplinas);
             case 4: // Sair
                 JOptionPane.showMessageDialog(null, "Programa encerrado.");
                 break;
         }
+    }
+
+    public void cadastrarDisciplina() {
+        String[] niveis = {"Técnico", "Subsequente", "Graduação"};
+        String[] periodos = {"Matutino", "Vespertino", "Noturno"};
+        String[] categorias = {"Análise de Sistemas", "Redes", "Hardware", "Teoria"};
+
+        do {
+            Disciplina disciplina = new Disciplina();
+            disciplina.setNomeDisciplina(JOptionPane.showInputDialog("Digite o nome da disciplina: "));
+            disciplina.setNivel((String) JOptionPane.showInputDialog(null, "Selecione o nível da disciplina:",
+                    "Nível", JOptionPane.QUESTION_MESSAGE, null, niveis, niveis[0]));
+            disciplina.setPeriodo((String) JOptionPane.showInputDialog(null, "Selecione o período da disciplina:",
+                    "Período", JOptionPane.QUESTION_MESSAGE, null, periodos, periodos[0]));
+            disciplina.setCategoria((String) JOptionPane.showInputDialog(null, "Selecione a categoria da disciplina:",
+                    "Categoria", JOptionPane.QUESTION_MESSAGE, null, categorias, categorias[0]));
+            disciplina.setCargaHorariaS(Integer.parseInt(JOptionPane.showInputDialog("Digite a carga horária da disciplina: ")));
+            disciplinas.add(disciplina);
+
+            int opcao = JOptionPane
+                    .showConfirmDialog(null, "Deseja cadastrar outra disciplina?", "Cadastrar Disciplina",
+                            JOptionPane.YES_NO_OPTION);
+
+            if (opcao != JOptionPane.YES_OPTION) {
+                break; // Sai do loop se o usuário não desejar cadastrar outra disciplina
+            }
+        } while (true);
+    }
+
+
+    public void listarDisciplinas(ArrayList<Disciplina> disciplinas) {
+        StringBuilder mensagem = new StringBuilder();
+        for (Disciplina disciplina : disciplinas) {
+            mensagem.append("Nome da disciplina: ")
+                    .append(disciplina.getNomeDisciplina())
+                    .append("\nCarga horária: ")
+                    .append(disciplina.getCargaHorariaS())
+                    .append("\nNível: ")
+                    .append(disciplina.getNivel())
+                    .append("\nPeríodo: ")
+                    .append(disciplina.getPeriodo())
+                    .append("\nCategoria: ")
+                    .append(disciplina.getCategoria())
+                    .append("\n\n");
+        }
+        JOptionPane.showMessageDialog(null, mensagem.toString(), "Disciplinas Cadastradas",
+                JOptionPane.INFORMATION_MESSAGE);
+        menuAdministrador();
     }
 
     public boolean validarSenha() {

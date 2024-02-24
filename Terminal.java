@@ -37,8 +37,6 @@ public class Terminal {
                     //professor.loginComoProfessor(professores);
                     break;
                 case 1: // Administrador
-                    disciplinas.cadastrarDisciplina();
-                    disciplinas.listarDisciplinas();
                     adm.login();
                     adm.menuAdministrador();
                     break;
