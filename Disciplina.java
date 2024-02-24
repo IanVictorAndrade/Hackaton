@@ -112,4 +112,12 @@ public class Disciplina {
         return null;
     }
 
+    public static String[] getNomesDisciplinas(ArrayList<Disciplina> disciplinas) {
+        String[] nomes = new String[disciplinas.size()];
+        for (int i = 0; i < disciplinas.size(); i++) {
+            nomes[i] = disciplinas.get(i).getNomeDisciplina();
+        }
+        return nomes;
+    }
+
 }

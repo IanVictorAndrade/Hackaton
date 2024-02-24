@@ -6,10 +6,6 @@ import java.util.Scanner;
 public class TerminalTesteProfessor {
     public static void main(String[] args) {
     ArrayList<Professor> professores = new ArrayList<>();
-        Professor prof1 = new Professor();
-        Professor prof2 = new Professor();
-        professores.add(prof1);
-        professores.add(prof2);
 
         String[] opcoesLogin = {"Logar como professor", "Logar como admnistrador", "Sair"};
 

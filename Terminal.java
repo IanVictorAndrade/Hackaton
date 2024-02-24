@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Terminal {
     public static void main(String[] args) {
         Disciplina disciplinas = new Disciplina();
+        Professor professor = new Professor();
         Administrador adm = new Administrador();
         ArrayList<Professor> professores = adm.getProfessoresCadastrados(); // Aqui você precisa ter acesso aos professores cadastrados
 
@@ -33,6 +34,7 @@ public class Terminal {
                     } else {
                         JOptionPane.showMessageDialog(null, "Login ou senha incorretos para professor.");
                     }
+                    //professor.loginComoProfessor(professores);
                     break;
                 case 1: // Administrador
                     disciplinas.cadastrarDisciplina();

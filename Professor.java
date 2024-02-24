@@ -16,24 +16,6 @@ public class Professor {
     private String turnoPreferido;
     private String afinidadeTurma;
 
-    // Metodo construtor
-
-//    public Professor(String nome, int matricula, String especializacao, boolean coordenador, int cHoraria, String login,
-//            String senha,
-//            String disciplinasEscolhidas, String disciplinaDominio, String turnoPreferido, String afinidadeTurma) {
-//        this.nome = nome;
-//        this.matricula = matricula;
-//        this.especializacao = especializacao;
-//        this.coordenador = coordenador;
-//        this.cHoraria = cHoraria;
-//        this.login = login;
-//        this.senha = senha;
-//        this.disciplinasEscolhidas = disciplinasEscolhidas;
-//        this.disciplinaDominio = disciplinaDominio;
-//        this.turnoPreferido = turnoPreferido;
-//        this.afinidadeTurma = afinidadeTurma;
-//    }
-
     // Getters e setters
 
     public String getNome() {
@@ -116,6 +98,8 @@ public class Professor {
         this.afinidadeTurma = afinidadeTurma;
     }
 
+
+
     public boolean isCoordenador() {
         return coordenador;
     }
@@ -130,6 +114,8 @@ public class Professor {
         for (Professor professor : professores) {
             if (professor.getLogin().equals(login) && professor.getSenha().equals(senha)) {
                 return professor; // encontrou um professor com o login e senha correspondentes
+                // Caso as credencias estiverem corretas, o professor terá acesso ao menu do
+                // professor
             }
         }
         return null; // nenhum professor encontrado com o login e senha correspondentes
@@ -167,8 +153,38 @@ public class Professor {
         }
     }
 
-    public static String escolherDisciplinas() {
-        return "";
+    public void escolherDisciplinas(ArrayList<Disciplina> disciplinas) {
+        boolean sair = false;
+
+        while (!sair) {
+            String[] opcoes = {"Alterar disciplina de domínio", "Alterar turno preferido", "Alterar afinidade com a turma"};
+            int escolha = JOptionPane.showOptionDialog(
+            null,
+            "Escolha uma opção para alterar:",
+            "Gerenciar Preferências",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.PLAIN_MESSAGE, null,
+            opcoes,
+            opcoes[0]);
+
+            switch (escolha) {
+                case 0:
+                    String[] disciplinasCadastradas = Disciplina.getNomesDisciplinas(disciplinas);
+                    if (disciplinasCadastradas.length > 0) {
+                    String disciplinaSelecionada = (String) JOptionPane.showInputDialog(
+                            null,
+                            "Selecione a disciplina de domínio:",
+                            "Alterar Disciplina de Domínio",
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            disciplinasCadastradas,
+                            disciplinasCadastradas[0]);
+                } else {
+                JOptionPane.showMessageDialog(null, "Nenhuma disciplina cadastrada.");
+                    }
+                    break;
+            }
+        }
     }
 
     public static String gerenciarPreferencias() {
