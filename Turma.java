@@ -132,7 +132,7 @@ public class Turma {
         } while (true);
     }
 
-    public static void editarTurma(ArrayList<Turma> listaTurmas) {
+    public static void editarTurma(ArrayList<Turma> listaTurmas, ArrayList<Disciplina> listaDisciplinas) {
         String[] modalidades = {"Técnico", "Subsequente", "Graduação"};
         String[] cursos = {"ADS", "Informática", "Manutenção e Suporte"};
         String[] periodos = {"1º", "2º", "3º", "4º", "5º"};
@@ -195,7 +195,35 @@ public class Turma {
                             break;
     
                         case 4:    // Edição da Disciplina
-                            
+                            Disciplina.listarDisciplinas();
+                            int idEditarDisciplina = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID da disciplina desejada:")); 
+                            // Lista de opções de disciplinas
+                                String[] opcoesDisciplinas = new String[listaDisciplinas.size()];
+                                for (int i = 0; i < listaDisciplinas.size(); i++) {
+                                    opcoesDisciplinas[i] = listaDisciplinas.get(i).getNomeDisciplina();
+                                }
+                        
+                                String disciplinaSelecionada = (String) JOptionPane.showInputDialog(null,
+                                        "Selecione a disciplina para esta turma:", "Disciplina", JOptionPane.QUESTION_MESSAGE,
+                                    null, opcoesDisciplinas, opcoesDisciplinas[0]);
+                    
+                            // Encontrar a disciplina correspondente ao nome selecionado
+                            Disciplina disciplinaAssociada = null;
+                            for (Disciplina disciplina : listaDisciplinas) {
+                                if (disciplina.getNomeDisciplina().equals(disciplinaSelecionada)) {
+                                    disciplinaAssociada = disciplina;
+                                    break;
+                                }
+                            }
+                    
+                            // Verificar se a disciplina foi encontrada
+                            if (disciplinaAssociada != null) {
+                                turmaEditar.setDisciplinasTurma(disciplinaAssociada);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Disciplina não encontrada.");
+                                continue; // Continue para evitar adicionar uma turma sem disciplina associada
+                            }
+    
                             break;
     
                         case 5:    // Sair do menu de edição
