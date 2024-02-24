@@ -3,18 +3,13 @@ import java.util.ArrayList;
 
 public class Terminal {
     public static void main(String[] args) {
-        Professor professor = new Professor();
-        ArrayList<Professor> professores = new ArrayList<>();
-        Professor prof1 = new Professor();
-        Professor prof2 = new Professor();
-        professores.add(prof1);
-        professores.add(prof2);
+        Disciplina disciplinas = new Disciplina();
         Administrador adm = new Administrador();
+        ArrayList<Professor> professores = adm.getProfessoresCadastrados(); // Aqui você precisa ter acesso aos professores cadastrados
 
         boolean loop = true;
 
         while (loop) {
-
             String[] opcoes = {"Professor", "Administrador", "Sair"};
             int opcao = JOptionPane.showOptionDialog(
                     null,
@@ -28,16 +23,27 @@ public class Terminal {
 
             switch (opcao) {
                 case 0: // Professor
-                    professor.loginComoProfessor(professores);
+                    String loginProfessor = JOptionPane.showInputDialog("Digite o login:");
+                    String senhaProfessor = JOptionPane.showInputDialog("Digite a senha:");
+
+                    Professor professorLogado = Professor.login(professores, loginProfessor, senhaProfessor);
+                    if (professorLogado != null) {
+                        JOptionPane.showMessageDialog(null, "Login como professor bem-sucedido!");
+                        professorLogado.menuProfessor();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Login ou senha incorretos para professor.");
+                    }
                     break;
                 case 1: // Administrador
+                    disciplinas.cadastrarDisciplina();
+                    disciplinas.listarDisciplinas();
                     adm.login();
+                    adm.menuAdministrador();
                     break;
                 case 2: // Sair
                     JOptionPane.showMessageDialog(null, "Programa encerrado.");
                     loop = false;
                     break;
-
             }
         }
     }
