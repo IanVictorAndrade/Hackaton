@@ -1,5 +1,4 @@
 import javax.swing.JOptionPane;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -69,12 +68,12 @@ public class Turma {
     //Metodos
 
 
-    public static String listarTurmas(ArrayList<Turma> turmas) {
+    public static String listarTurmas(ArrayList<Turma> listaTurmas) {
         
         if (turmas.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Nenhum equipamento cadastrado.");
+            JOptionPane.showMessageDialog(null, "Nenhuma turma cadastrada.");
         } else {
-            for (Turma turma : turmas) {
+            for (Turma turma : listaTurmas) {
 
                 JOptionPane.showMessageDialog(null, "ID: " + turma.getIdTurma() +
                         "\nModalidade " + turma.getModalidade() +
@@ -157,7 +156,7 @@ public class Turma {
             System.out.println("Nenhuma turma cadastrada.");
         } else {
             listarTurmas(listaTurmas);
-            int idEditar = getIntegerInput("Digite o ID do equipamento que deseja editar");
+            int idEditar = JOptionPane.showInputDialog("Digite o ID da turma");
 
             for (Turma turma : listaTurmas) {
                 if (turma.getIdTurma() == idEditar) {
