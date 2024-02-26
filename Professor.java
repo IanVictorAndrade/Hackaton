@@ -12,10 +12,11 @@ public class Professor {
     private int cHoraria;
     public String login;
     private String senha;
-    private String disciplinasEscolhidas;
     private String disciplinaDominio;
     private String turnoPreferido;
     private String afinidadeTurma;
+
+    public static ArrayList<String> disciplinasEscolhidas = new ArrayList<>();
 
     // Getters e setters
 
@@ -67,14 +68,6 @@ public class Professor {
         this.senha = senha;
     }
 
-    public String getDisciplinasEscolhidas() {
-        return disciplinasEscolhidas;
-    }
-
-    public void setDisciplinasEscolhidas(String disciplinasEscolhidas) {
-        this.disciplinasEscolhidas = disciplinasEscolhidas;
-    }
-
     public String getDisciplinaDominio() {
         return disciplinaDominio;
     }
@@ -124,35 +117,30 @@ public class Professor {
         boolean sair = false;
         while (!sair) {
             String[] opcoesMenu = { "Escolher disciplinas", "Gerenciar preferências", "Listar disciplinas escolhidas",
-                    "Sair" };
+                    "Voltar" };
             int escolha = JOptionPane.showOptionDialog(null, "Escolha uma opção: ", "Menu", JOptionPane.DEFAULT_OPTION,
                     JOptionPane.PLAIN_MESSAGE, null, opcoesMenu, opcoesMenu[0]);
 
             switch (escolha) {
                 case 0:
-                    JOptionPane.showMessageDialog(null, "Opção 'Escolher disciplinas' selecionada.");
                     // Chamar metodo escolherDisciplinas()
+                    Disciplina.escolherDisciplinas(Administrador.disciplinas);
                     break;
                 case 1:
-                    JOptionPane.showMessageDialog(null, "Opção 'Gerenciar preferências' selecionada.");
                     // Chamar metodo gerenciarPreferencias()
+                    gerenciarPreferencias();
                     break;
                 case 2:
-                    JOptionPane.showMessageDialog(null, "Opção 'Listar disciplinas escolhidas' selecionada.");
-                    // Chamar metodo listarDiscEscolhidas()
+                    listarDiscEscolhidas();
                     break;
                 case 3:
-                    JOptionPane.showMessageDialog(null, "Saindo...");
                     sair = true; // Altera a variável para sair do loop
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Nenhuma opção selecionada.");
                     break;
             }
         }
     }
 
-    public void escolherDisciplinas(ArrayList<Disciplina> disciplinas) {
+    /*public void escolherDisciplinas(ArrayList<Disciplina> disciplinas) {
         boolean sair = false;
 
         while (!sair) {
@@ -183,15 +171,54 @@ public class Professor {
                 sair = true; // Usuário cancelou a operação
             }
         }
+    }*/
+
+
+    public static void gerenciarPreferencias() {
+        Professor professor = new Professor();
+        boolean sair = false;
+
+        while (!sair) {
+            String[] opcoes = {"Alterar disciplina de domínio", "Alterar turno preferido", "Alterar afinidade com a turma", "Voltar"};
+            int escolha = JOptionPane.showOptionDialog(
+            null,
+            "Escolha uma opção para alterar:",
+            "Gerenciar Preferências",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.PLAIN_MESSAGE, null,
+            opcoes,
+            opcoes[0]);
+
+            switch (escolha) {
+                case 0:
+                    Disciplina.escolherDisciplinaDom(Administrador.disciplinas);
+                    break;
+                case 1:
+                    String[] turnos = {"Matutino", "Vespertino", "Noturno"};
+                    String turnoSelecionado = (String) JOptionPane.showInputDialog(
+                                null,
+                                "Selecione a disciplina de domínio:",
+                                "Escolher Disciplina de Domínio",
+                                JOptionPane.QUESTION_MESSAGE,
+                                null,
+                                turnos,
+                                turnos[0]);
+                    professor.setTurnoPreferido(turnoSelecionado);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    sair = true; // Altera a variável para sair do loop
+                    break;
+            }
+        }
     }
 
-
-    public static String gerenciarPreferencias() {
-        return "";
-    }
-
-    public static String listarDiscEscolhidas() {
-        return "";
+    public static void listarDiscEscolhidas() {
+        JOptionPane.showMessageDialog(null, "Disciplinas escolhidas: ");
+        for (String disciplina : disciplinasEscolhidas) {
+            JOptionPane.showMessageDialog(null, disciplina);
+        }
     }
 
 }

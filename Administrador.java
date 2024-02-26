@@ -9,7 +9,7 @@ public class Administrador {
     private String senha = "123";
     private ArrayList<Professor> professoresCadastrados;
 
-    private ArrayList<Disciplina> disciplinas;
+    public static ArrayList<Disciplina> disciplinas;
 
     public Administrador() {
         this.professoresCadastrados = new ArrayList<>();

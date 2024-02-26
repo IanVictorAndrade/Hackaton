@@ -24,7 +24,6 @@ public class Terminal {
 
             switch (opcao) {
                 case 0: // Professor
-                    professor.escolherDisciplinas(adm.getDisciplinas());
                     String loginProfessor = JOptionPane.showInputDialog("Digite o login:");
                     String senhaProfessor = JOptionPane.showInputDialog("Digite a senha:");
 
