@@ -38,7 +38,6 @@ public class Terminal {
                     break;
                 case 1: // Administrador
                     adm.login();
-                    adm.menuAdministrador();
                     break;
                 case 2: // Sair
                     JOptionPane.showMessageDialog(null, "Programa encerrado.");

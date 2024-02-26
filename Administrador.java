@@ -71,9 +71,9 @@ public class Administrador {
 
             if (validarLogin(loginDigitado, senhaDigitada)) {
                 JOptionPane.showMessageDialog(null, "Login bem-sucedido!");
+                menuAdministrador();
             } else {
                 JOptionPane.showMessageDialog(null, "Login ou senha incorretos. Tente novamente.");
-                return;
             }
     }
 
