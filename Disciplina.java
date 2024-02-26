@@ -79,6 +79,7 @@ public class Disciplina {
     }
 
     public static String escolherDisciplinaDom(ArrayList<Disciplina> disciplinas) {
+        Professor professor = new Professor();
         boolean sair = false;
 
         while (!sair) {
@@ -105,12 +106,11 @@ public class Disciplina {
                                 disciplinasCadastradas,
                                 disciplinasCadastradas[0]);
                         if (disciplinaSelecionada != null) {
-                            Professor.disciplinasEscolhidas.add(disciplinaSelecionada);
-                        }
-
+                            professor.setDisciplinaDominio(disciplinaSelecionada);
                     } else {
                         JOptionPane.showMessageDialog(null, "Nenhuma disciplina cadastrada pelo adm.");
                     }
+                }
                     break;
                 case 1:
                     sair = true; // Altera a variável para sair do loop
@@ -162,26 +162,6 @@ public class Disciplina {
                                 }
                             }
                         }
-
-
-                
-                /* String[] disciplinasCadastradas = getNomesDisciplinas(disciplinas);
-                    if (disciplinasCadastradas.length > 0) {
-                        String disciplinaSelecionada = (String) JOptionPane.showInputDialog(
-                                null,
-                                "Selecione a disciplina de domínio:",
-                                "Escolher Disciplina de Domínio",
-                                JOptionPane.QUESTION_MESSAGE,
-                                null,
-                                disciplinasCadastradas,
-                                disciplinasCadastradas[0]);
-                        if (disciplinaSelecionada != null) {
-                            professor.setDisciplinaDominio(disciplinaSelecionada);
-                        }
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Nenhuma disciplina cadastrada pelo adm.");
-                    }*/
                     break;
                 case 1:
                     sair = true; // Altera a variável para sair do loop
