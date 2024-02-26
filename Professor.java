@@ -1,4 +1,5 @@
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.*;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -113,9 +114,7 @@ public class Professor {
     public static Professor login(ArrayList<Professor> professores, String login, String senha) {
         for (Professor professor : professores) {
             if (professor.getLogin().equals(login) && professor.getSenha().equals(senha)) {
-                return professor; // encontrou um professor com o login e senha correspondentes
-                // Caso as credencias estiverem corretas, o professor terá acesso ao menu do
-                // professor
+                return professor;
             }
         }
         return null; // nenhum professor encontrado com o login e senha correspondentes
@@ -157,35 +156,35 @@ public class Professor {
         boolean sair = false;
 
         while (!sair) {
-            String[] opcoes = {"Alterar disciplina de domínio", "Alterar turno preferido", "Alterar afinidade com a turma"};
-            int escolha = JOptionPane.showOptionDialog(
-            null,
-            "Escolha uma opção para alterar:",
-            "Gerenciar Preferências",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.PLAIN_MESSAGE, null,
-            opcoes,
-            opcoes[0]);
+            JPanel panel = new JPanel();
+            panel.setLayout(new GridLayout(0, 1));
 
-            switch (escolha) {
-                case 0:
-                    String[] disciplinasCadastradas = Disciplina.getNomesDisciplinas(disciplinas);
-                    if (disciplinasCadastradas.length > 0) {
-                    String disciplinaSelecionada = (String) JOptionPane.showInputDialog(
-                            null,
-                            "Selecione a disciplina de domínio:",
-                            "Alterar Disciplina de Domínio",
-                            JOptionPane.QUESTION_MESSAGE,
-                            null,
-                            disciplinasCadastradas,
-                            disciplinasCadastradas[0]);
-                } else {
-                JOptionPane.showMessageDialog(null, "Nenhuma disciplina cadastrada.");
+            for (Disciplina disciplina : disciplinas) {
+                JCheckBox checkBox = new JCheckBox(disciplina.getNomeDisciplina());
+                panel.add(checkBox);
+            }
+
+            int result = JOptionPane.showConfirmDialog(null, panel, "Escolha as disciplinas de domínio:",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+            if (result == JOptionPane.OK_OPTION) {
+                // Lógica para lidar com as disciplinas selecionadas
+                for (Component component : panel.getComponents()) {
+                    if (component instanceof JCheckBox) {
+                        JCheckBox checkBox = (JCheckBox) component;
+                        if (checkBox.isSelected()) {
+                            String disciplinaSelecionada = checkBox.getText();
+                            // Faça algo com a disciplina selecionada
+                            System.out.println("Disciplina selecionada: " + disciplinaSelecionada);
+                        }
                     }
-                    break;
+                }
+            } else {
+                sair = true; // Usuário cancelou a operação
             }
         }
     }
+
 
     public static String gerenciarPreferencias() {
         return "";

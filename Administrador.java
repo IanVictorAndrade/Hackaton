@@ -166,26 +166,17 @@ public class Administrador {
         Long matricula = Long.parseLong(JOptionPane.showInputDialog("Matrícula:"));
         String especializacao = JOptionPane.showInputDialog("Especialização:");
         boolean coordenador = Boolean.parseBoolean(JOptionPane.showInputDialog("Coordenador (true/false):"));
-        int cHoraria = Integer.parseInt(JOptionPane.showInputDialog("Carga horária:"));
         String login = JOptionPane.showInputDialog("Login:");
         String senha = JOptionPane.showInputDialog("Senha:");
-        String disciplinasEscolhidas = JOptionPane.showInputDialog("Disciplinas escolhidas:");
-        String disciplinaDominio = JOptionPane.showInputDialog("Disciplina de domínio:");
-        String turnoPreferido = JOptionPane.showInputDialog("Turno preferido:");
-        String afinidadeTurma = JOptionPane.showInputDialog("Afinidade com a turma:");
 
         Professor professor = new Professor();
         professor.setNome(nome);
         professor.setMatricula(matricula);
         professor.setEspecializacao(especializacao);
         professor.setCoordenador(coordenador);
-        professor.setcHoraria(cHoraria);
+        professor.setcHoraria(0);
         professor.setLogin(login);
         professor.setSenha(senha);
-        professor.setDisciplinasEscolhidas(disciplinasEscolhidas);
-        professor.setDisciplinaDominio(disciplinaDominio);
-        professor.setTurnoPreferido(turnoPreferido);
-        professor.setAfinidadeTurma(afinidadeTurma);
 
         professoresCadastrados.add(professor);
         menuAdministrador();
@@ -200,35 +191,16 @@ public class Administrador {
                     .append("Coordenador: ").append(professor.isCoordenador() ? "Sim" : "Não").append("\n")
                     .append("Carga Horária: ").append(professor.getcHoraria()).append("\n")
                     .append("Login: ").append(professor.getLogin()).append("\n")
-                    .append("Senha: ").append(professor.getSenha()).append("\n")
-                    .append("Disciplinas Escolhidas: ").append(professor.getDisciplinasEscolhidas()).append("\n")
-                    .append("Disciplina de Domínio: ").append(professor.getDisciplinaDominio()).append("\n")
-                    .append("Turno Preferido: ").append(professor.getTurnoPreferido()).append("\n")
-                    .append("Afinidade com a Turma: ").append(professor.getAfinidadeTurma()).append("\n\n");
+                    .append("Senha: ").append(professor.getSenha()).append("\n");
         }
         JOptionPane.showMessageDialog(null, mensagem.toString(), "Professores Cadastrados",
                 JOptionPane.INFORMATION_MESSAGE);
         menuAdministrador();
     }
 
-
-    public void realizarLogin(String login, String senha) {
-        Professor professor = Professor.login(professoresCadastrados, login, senha);
-        if (professor != null) {
-            JOptionPane.showMessageDialog(null, "Login bem-sucedido!");
-            Professor.menuProfessor();
-        } else {
-            JOptionPane.showMessageDialog(null, "Login ou senha incorretos. Tente novamente.");
-        }
-    }
-
     public String alterarCadProf() {
         return "";
     }
-
-//    public String cadastrarDisciplina() {
-//        return "";
-//    }
 
     public String alterarCadDisc() {
         return "";
