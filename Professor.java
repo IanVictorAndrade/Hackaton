@@ -139,41 +139,6 @@ public class Professor {
             }
         }
     }
-
-    /*public void escolherDisciplinas(ArrayList<Disciplina> disciplinas) {
-        boolean sair = false;
-
-        while (!sair) {
-            JPanel panel = new JPanel();
-            panel.setLayout(new GridLayout(0, 1));
-
-            for (Disciplina disciplina : disciplinas) {
-                JCheckBox checkBox = new JCheckBox(disciplina.getNomeDisciplina());
-                panel.add(checkBox);
-            }
-
-            int result = JOptionPane.showConfirmDialog(null, panel, "Escolha as disciplinas de domínio:",
-                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-
-            if (result == JOptionPane.OK_OPTION) {
-                // Lógica para lidar com as disciplinas selecionadas
-                for (Component component : panel.getComponents()) {
-                    if (component instanceof JCheckBox) {
-                        JCheckBox checkBox = (JCheckBox) component;
-                        if (checkBox.isSelected()) {
-                            String disciplinaSelecionada = checkBox.getText();
-                            // Faça algo com a disciplina selecionada
-                            System.out.println("Disciplina selecionada: " + disciplinaSelecionada);
-                        }
-                    }
-                }
-            } else {
-                sair = true; // Usuário cancelou a operação
-            }
-        }
-    }*/
-
-
     public static void gerenciarPreferencias() {
         Professor professor = new Professor();
         boolean sair = false;
@@ -215,10 +180,12 @@ public class Professor {
     }
 
     public static void listarDiscEscolhidas() {
-        JOptionPane.showMessageDialog(null, "Disciplinas escolhidas: ");
+        StringBuilder mensagem = new StringBuilder();
+        mensagem.append("Disciplinas escolhidas: \n");
         for (String disciplina : disciplinasEscolhidas) {
-            JOptionPane.showMessageDialog(null, disciplina);
+            mensagem.append(disciplina).append("\n");
         }
+        JOptionPane.showMessageDialog(null, mensagem.toString(), "Disciplinas Cadastradas", JOptionPane.INFORMATION_MESSAGE);
     }
 
 }
