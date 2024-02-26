@@ -95,7 +95,7 @@ public class Administrador {
                 cadastrarProfessor();
                 break;
             case 1: // Listar professores
-                listarProfessores();
+                listarProfessores(professoresCadastrados);
                 break;
             case 2: // Cadastrar disciplina
                 cadastrarDisciplina();
@@ -188,12 +188,29 @@ public class Administrador {
         professor.setAfinidadeTurma(afinidadeTurma);
 
         professoresCadastrados.add(professor);
+        menuAdministrador();
     }
 
-    public ArrayList<Professor> listarProfessores() {
-        JOptionPane.showMessageDialog(null, professoresCadastrados);
-        return professoresCadastrados;
+    public void listarProfessores(ArrayList<Professor> professores) {
+        StringBuilder mensagem = new StringBuilder();
+        for (Professor professor : professores) {
+            mensagem.append("Nome: ").append(professor.getNome()).append("\n")
+                    .append("Matrícula: ").append(professor.getMatricula()).append("\n")
+                    .append("Especialização: ").append(professor.getEspecializacao()).append("\n")
+                    .append("Coordenador: ").append(professor.isCoordenador() ? "Sim" : "Não").append("\n")
+                    .append("Carga Horária: ").append(professor.getcHoraria()).append("\n")
+                    .append("Login: ").append(professor.getLogin()).append("\n")
+                    .append("Senha: ").append(professor.getSenha()).append("\n")
+                    .append("Disciplinas Escolhidas: ").append(professor.getDisciplinasEscolhidas()).append("\n")
+                    .append("Disciplina de Domínio: ").append(professor.getDisciplinaDominio()).append("\n")
+                    .append("Turno Preferido: ").append(professor.getTurnoPreferido()).append("\n")
+                    .append("Afinidade com a Turma: ").append(professor.getAfinidadeTurma()).append("\n\n");
+        }
+        JOptionPane.showMessageDialog(null, mensagem.toString(), "Professores Cadastrados",
+                JOptionPane.INFORMATION_MESSAGE);
+        menuAdministrador();
     }
+
 
     public void realizarLogin(String login, String senha) {
         Professor professor = Professor.login(professoresCadastrados, login, senha);
